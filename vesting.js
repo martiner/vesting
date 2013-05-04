@@ -1,4 +1,4 @@
-angular.module("vesting", ['ui.date'])
+angular.module("vesting", ['ui.date','ui.bootstrap'])
 .controller("VestingCtrl", function ($scope) {
 	$scope.effectiveDate = new Date();
 	$scope.startDate = new Date();
@@ -22,7 +22,11 @@ angular.module("vesting", ['ui.date'])
 
 	$scope.vested = function() {
 		return Math.round($scope.optionsNumber / $scope.totalMonths() * $scope.fullMonths());
-	}
+	};
+
+	$scope.vestedPct = function() {
+		return Math.round(100 / $scope.totalMonths() * $scope.fullMonths());
+	};
 })
 ;
 

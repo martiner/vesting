@@ -2,28 +2,63 @@
 <html ng-app="vesting">
   <head>
     <meta charset="utf-8">
+    <title>Stock Options Vesting</title>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
+    <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.3.0.js"></script>
     <script src="http://angular-ui.github.io/ui-date/components/angular-ui-date/src/date.js"></script>
     <script src="vesting.js"></script>
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
     <link href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" type="text/css" rel="stylesheet">
+    <style type="text/css">
+      .container-narrow {
+        margin: 0 auto;
+        max-width: 500px;
+      }
+    </style>
   </head>
   <body>
-    <h1>Vesting</h1>
-    <div ng-controller="VestingCtrl">
-      <form>
-        Start date: <input type="text" ng-model="startDate" ui-date><br>
+    <div ng-controller="VestingCtrl" class="container-narrow">
 
-        Options number: <input type="text" ng-model="optionsNumber"><br>
-        
-        Vesting length: <input type="text" ng-model="vestingLength"> years<br>
-        
-		<h2>Result</h2>
-        Vesting ends: {{vestingEnds() | date:"shortDate"}}<br>
-        Finished: {{fullMonths()}} of {{totalMonths()}} months<br>
-        Vested: {{vested()}} of {{optionsNumber}} stock options<br>
-        Effective date: <input type="text" ng-model="effectiveDate" ui-date><br>
+      <h1>Vesting</h1>
+      <form class="form-horizontal">
+
+        <div class="control-group">
+          <label class="control-label" for="startDate">Start date</label>
+          <div class="controls">
+            <input type="text" id="startDate" ng-model="startDate" class="input-small" ui-date>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label" for="inputEmail">Options number</label>
+          <div class="controls">
+            <input type="text" id="optionsNumber" ng-model="optionsNumber" class="input-mini">
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label" for="vestingLength">Vesting length</label>
+          <div class="controls">
+            <input type="text" id="vestingLength" ng-model="vestingLength" class="input-mini">
+            <span class="help-inline">years</span>
+          </div>
+        </div>
+
+		<div class="well">
+		    <p class="text-center">Vesting ends: {{vestingEnds() | date:"shortDate"}}</p>
+		    <p class="text-center">Finished: <b>{{fullMonths()}}</b> of {{totalMonths()}} months</p>
+		    <p class="text-center">Vested: <b>{{vested()}}</b> of {{optionsNumber}} stock options</p>
+		    <progress value="vestedPct()"></progress>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label" for="effectiveDate">Effective date</label>
+          <div class="controls">
+            <input type="text" id="effectiveDate" ng-model="effectiveDate" class="input-small" ui-date>
+          </div>
+        </div>
       </form>
     </div>
   </body>
