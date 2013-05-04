@@ -1,0 +1,30 @@
+<!doctype html>
+<html ng-app="vesting">
+  <head>
+    <meta charset="utf-8">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
+    <script src="date.js"></script>
+    <script src="vesting.js"></script>
+    <link href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" type="text/css" rel="stylesheet">
+  </head>
+  <body>
+    <h1>Vesting</h1>
+    <div ng-controller="VestingCtrl">
+      <form>
+        Start date: <input type="text" ng-model="startDate" ui-date><br>
+
+        Options number: <input type="text" ng-model="optionsNumber"><br>
+        
+        Vesting length: <input type="text" ng-model="vestingLength"> years<br>
+        
+		<h2>Result</h2>
+        Vesting ends: {{vestingEnds() | date:"shortDate"}}<br>
+        Finished: {{fullMonths()}} of {{totalMonths()}} months<br>
+        Vested: {{vested()}} of {{optionsNumber}} stock options<br>
+        Effective date: <input type="text" ng-model="effectiveDate" ui-date><br>
+      </form>
+    </div>
+  </body>
+</html>
