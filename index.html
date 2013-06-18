@@ -27,36 +27,36 @@
         <div class="control-group">
           <label class="control-label" for="startDate">Start date</label>
           <div class="controls">
-            <input type="text" id="startDate" ng-model="startDate" class="input-small" ui-date>
+            <input type="text" id="startDate" ng-model="vest.startDate" class="input-small" ui-date>
           </div>
         </div>
 
         <div class="control-group">
           <label class="control-label" for="inputEmail">Options number</label>
           <div class="controls">
-            <input type="text" id="optionsNumber" ng-model="optionsNumber" class="input-mini">
+            <input type="text" id="optionsNumber" ng-model="vest.optionsNumber" class="input-mini">
           </div>
         </div>
 
         <div class="control-group">
           <label class="control-label" for="vestingLength">Vesting length</label>
           <div class="controls">
-            <input type="text" id="vestingLength" ng-model="vestingLength" class="input-mini">
+            <input type="text" id="vestingLength" ng-model="vest.vestingLength" class="input-mini">
             <span class="help-inline">years</span>
           </div>
         </div>
 
 		<div class="well">
-		    <p class="text-center">Vesting ends: {{vestingEnds() | date:"shortDate"}}</p>
-		    <p class="text-center">Finished: <b>{{fullMonths()}}</b> of {{totalMonths()}} months</p>
-		    <p class="text-center">Vested: <b>{{vested()}}</b> of {{optionsNumber}} stock options</p>
-		    <progress value="vestedPct()"></progress>
+		    <p class="text-center">Vesting ends: {{vest.vestingEnds() | date:"shortDate"}}</p>
+		    <p class="text-center">Finished: <b>{{vest.fullMonths()}}</b> of {{vest.totalMonths()}} months</p>
+		    <p class="text-center">Vested: <b>{{vest.vested()}}</b> of {{vest.optionsNumber}} stock options</p>
+		    <progress value="vest.vestedPct()"></progress>
         </div>
 
         <div class="control-group">
           <label class="control-label" for="effectiveDate">Effective date</label>
           <div class="controls">
-            <input type="text" id="effectiveDate" ng-model="effectiveDate" class="input-small" ui-date>
+            <input type="text" id="effectiveDate" ng-model="vest.effectiveDate" class="input-small" ui-date>
           </div>
         </div>
       </form>
